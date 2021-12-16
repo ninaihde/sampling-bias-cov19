@@ -1,6 +1,6 @@
 # Analysis of Sampling Bias in COVID-19 Data
 
-This project was conducted in the winter term 2021/22 at the Hasso Plattner Institute for Digital Engineering, University of Potsdam, Germany. Its goal is to perform analyses on metadata of COVID-19 sampling data in order to identify biases. Subsequently, an approach will be developed that can remove or even avoid these biases and furthermore support the removal of found biases in the associated sampling data.
+This project was conducted in the winter term 2021/22 at the Hasso Plattner Institute for Digital Engineering, University of Potsdam, Germany. Its goal is to perform analyses on metadata of COVID-19 sequencing data in order to identify biases. Subsequently, an approach will be developed that can remove or even avoid these biases and furthermore support the removal of found biases in the associated sequencing data.
 
 ## EBI Metadata
 
