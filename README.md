@@ -22,7 +22,7 @@ The data used to integrate the number of infections (per country or per U.S. Sta
 
 ## Methods
 
-The project is divided into several Juypter Notebooks. If the notebook name does not explicitly state whether it works with EBI or GISAID metadata, the former is the case:
+The project is divided into several Juypter Notebooks. Only the last of the listed notebooks deals with the GISAID database:
 
   - [preprocess_metadata.ipynb](src/preprocess_metadata.ipynb) removes empty columns and cleans the provided metadata. It has to be executed first because it also adds several columns needed for later analysis.
   - [create_general_insights.ipynb](src/create_general_insights.ipynb) generates a profiling report as HTML about all available columns and produces general insights, e.g. regarding specific biases or columns.
