@@ -22,12 +22,15 @@ The data used to integrate the number of infections (per country or per U.S. Sta
 
 ## Methods
 
-The project is divided into several Juypter Notebooks. Only the last of the listed notebooks deals with the GISAID database:
+The project is divided into several Juypter Notebooks and Python scripts dealing with EBI or GISAID metadata. The analyses of both metadata files each can be found in a separate folder:
+- [EBI Metadata Analyses](src/EBI_analysis):
+  - [preprocess_metadata.ipynb](src/EBI_analysis/preprocess_metadata.ipynb) removes empty columns and cleans the provided metadata. It has to be executed before the following notebooks because it also adds several columns needed for later analysis.
+  - [create_general_insights.ipynb](src/EBI_analysis/create_general_insights.ipynb) generates a profiling report as HTML about all available columns and produces general insights, e.g. regarding specific biases or columns.
+  - [analyze_missing_values.ipynb](src/EBI_analysis/analyze_missing_values.ipynb) investigates if missing values are introduced by certain countries and creates PNGs disaggregating how many missing values exist in the different countries per column. 
+  - [analyze_us_states.ipynb](src/EBI_analysis/analyze_us_states.ipynb) extracts the U.S. States from the "region" column and analyzes the number of samples per U.S. State in relation to the respective number of inhabitants and infections of the state. 
+- [GISAID Metadata Analyses](src/GISAID_analysis):
+  - [preprocess_metadata.ipynb](src/GISAID_analysis/preprocess_metadata.ipynb) converts the given JSON file to a TSV file, cleans the resulting TSV and saves it as a CSV file. As the following notebooks rely on that CSV, this notebook has to be executed beforehand.
+  - [convert_json_to_tsv.py](src/GISAID_analysis/convert_json_to_tsv.py) provides the JSON-to-TSV conversion as a single script for external use.
+  - [create_general_insights.ipynb](src/GISAID_analysis/create_general_insights.ipynb) produces a general overview of the available features.
 
-  - [preprocess_metadata.ipynb](src/preprocess_metadata.ipynb) removes empty columns and cleans the provided metadata. It has to be executed first because it also adds several columns needed for later analysis.
-  - [create_general_insights.ipynb](src/create_general_insights.ipynb) generates a profiling report as HTML about all available columns and produces general insights, e.g. regarding specific biases or columns.
-  - [analyze_missing_values.ipynb](src/analyze_missing_values.ipynb) investigates if missing values are introduced by certain countries and creates PNGs disaggregating how many missing values exist in the different countries per column. 
-  - [analyze_us_states.ipynb](src/analyze_us_states.ipynb) extracts the U.S. States from the "region" column and analyzes the number of samples per U.S. State in relation to the respective number of inhabitants and infections of the state. 
-  - [investigate_gisaid_metadata.ipynb](src/investigate_gisaid_metadata.ipynb) converts the given JSON file to a TSV file and generates some general insights about the GISAID metadata.
-
-All notebooks dealing with the EBI metadata read a CSV at first and execute various analyses on it afterwards, each of which is introduced with a heading in a Markdown cell. This means that before the cells of an analysis can be executed, the first cell of such a notebook that reads the mentioned CSV must be executed first. Once this first cell has been executed, it does not have to be executed again for the cells of other analyses in this notebook - meaning each analysis, if any, enriches this CSV without changing the original data.
+All notebooks that read a CSV at first execute various analyses on it afterwards, each of which is introduced with a heading in a Markdown cell. This means that before the cells of an analysis can be executed, the first cell of such a notebook that reads the mentioned CSV must be executed first. Once this first cell has been executed, it does not have to be executed again for the cells of other analyses in this notebook - meaning each analysis, if any, enriches this CSV without changing the original data.
