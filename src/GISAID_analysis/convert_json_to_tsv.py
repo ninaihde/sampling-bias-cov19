@@ -5,17 +5,18 @@ import json
 
 def main():
     parser = argparse.ArgumentParser(description='A script that converts the JSON metadata from GISAID to a TSV file.')
-    parser.add_argument('-t', '--tsv', type=str, default=None,
-                        help='Location of resulting TSV file')
-    parser.add_argument('-j', '--json', type=str, default=None,
-                        help='Location of given GISAID json file')
+    required_args = parser.add_argument_group('required arguments')
+    required_args.add_argument('-j', '--json', type=str, required=True, help='location of given GISAID json file')
+    required_args.add_argument('-t', '--tsv', type=str, required=True, help='location of resulting TSV file')
+
     args = parser.parse_args()
     create_tsv(args.json, args.tsv)
 
 
 def create_tsv(json_path, tsv_path):
-    error_count = 0
+    print('Starting conversion...')
 
+    error_count = 0
     with open(json_path, 'r', encoding='utf-8') as json_file:
         with open(tsv_path, 'w') as tsv_file:
             for i, line in enumerate(json_file):
@@ -36,7 +37,7 @@ def create_tsv(json_path, tsv_path):
                     error_count += 1
                     continue
 
-    print(f'{error_count} UnicodeEncodeErrors occured.')
+    print(f'Finished conversion. {error_count} UnicodeEncodeErrors have occured.')
 
 
 if __name__ == '__main__':
