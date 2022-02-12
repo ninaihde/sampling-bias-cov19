@@ -27,7 +27,6 @@ def create_tsv(json_path, tsv_path):
                 if i == 0:
                     dw = csv.DictWriter(tsv_file, obj.keys(), delimiter='\t')
                     dw.writeheader()
-                    i += 1
 
                 try:
                     # For each object, append its values as new row to TSV
