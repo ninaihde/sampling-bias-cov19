@@ -14,7 +14,7 @@ The definitions of the included columns can be found in [definitions_EBI_metadat
 
 ### GISAID Metadata
 
-The GISAID metadata was retrieved as a JSON file via an internal API access to the [GISAID database](https://www.epicov.org/epi3/).
+The GISAID metadata was retrieved as a JSON file via an internal API access to the [GISAID database](https://www.epicov.org/epi3/). A rough documentation of the included columns can be found in the [submission protocol of the GISAID portal](https://www.protocols.io/view/sars-cov2-gisaid-submission-protocol-bumknu4w).
 
 ### Infection Data by the John Hopkins University
 
